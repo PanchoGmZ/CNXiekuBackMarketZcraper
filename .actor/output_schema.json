@@ -1,0 +1,22 @@
+{
+    "$schema": "https://apify.com/schemas/v1/output.ide.json",
+    "actorOutputSchemaVersion": 1,
+    "title": "TU CUMPA: producto o estado de búsqueda",
+    "properties": {
+        "results": {
+            "type": "string",
+            "title": "Producto según outputFormat o resultado separado de búsqueda",
+            "template": "{{links.apiDefaultDatasetUrl}}/items"
+        },
+        "runState": {
+            "type": "string",
+            "title": "Estado de ejecución",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/RUN_STATE"
+        },
+        "timings": {
+            "type": "string",
+            "title": "Tiempos medidos y contexto de prueba",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/TIMINGS"
+        }
+    }
+}

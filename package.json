@@ -1,0 +1,42 @@
+{
+    "name": "tucumpa-products",
+    "version": "0.0.1",
+    "type": "module",
+    "description": "Actor Apify para buscar y extraer productos CNXieku, con exportaci?n 1688 e integraci?n Back Market pendiente.",
+    "engines": {
+        "node": ">=22"
+    },
+    "dependencies": {
+        "apify": "^3.7.0",
+        "@crawlee/cheerio": "^3.15.3"
+    },
+    "devDependencies": {
+        "@apify/eslint-config": "^2.0.0",
+        "@apify/tsconfig": "^0.2.0",
+        "@types/node": "^24.0.0",
+        "eslint": "^9.29.0",
+        "eslint-config-prettier": "^10.1.5",
+        "globals": "^17.0.0",
+        "prettier": "^3.5.3",
+        "tsx": "^4.20.3",
+        "typescript": "^6.0.0",
+        "typescript-eslint": "^8.58.0",
+        "vitest": "^5.0.0"
+    },
+    "scripts": {
+        "start": "npm run build && npm run start:prod",
+        "start:prod": "node dist/main.js",
+        "start:dev": "tsx src/main.ts",
+        "build": "tsc",
+        "lint": "eslint",
+        "lint:fix": "eslint --fix",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "test": "tsc -p tsconfig.test.json && node --import ./.test-dist/test/setup.js --test .test-dist/test/*.test.js",
+        "verify:local": "tsc -p tsconfig.test.json && node .test-dist/scripts/verify-local.js",
+        "prepare:html": "npm run build && node dist/cli/prepare-html-input.js",
+        "check:actor": "npm run build && tsc -p tsconfig.test.json && node .test-dist/scripts/check-actor-package.js",
+        "verify:offline": "tsc -p tsconfig.test.json && node --import ./.test-dist/test/setup.js .test-dist/scripts/verify-offline.js"
+    },
+    "license": "ISC"
+}

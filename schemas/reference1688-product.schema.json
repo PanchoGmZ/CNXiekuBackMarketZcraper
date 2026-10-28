@@ -1,0 +1,234 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Emitted eleven-key reference1688 product",
+    "type": "object",
+    "properties": {
+        "url": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "uri"
+        },
+        "title": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "price": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "description": "Explicit source amount; currency is absent in the supplied reference."
+        },
+        "productLadderPrices": {
+            "type": "array",
+            "items": {},
+            "description": "No extracted price tiers; not a claim that no tiers exist at the source.",
+            "maxItems": 0
+        },
+        "moq": {
+            "type": [
+                "integer",
+                "null"
+            ],
+            "minimum": 1
+        },
+        "weight": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "additionalProperties": false,
+            "required": [
+                "value",
+                "unit"
+            ],
+            "properties": {
+                "value": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0
+                },
+                "unit": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "minLength": 1
+                }
+            },
+            "description": "Known source weight only. Zero placeholders are null; positive legacy structure remains unverified against an engineer sample."
+        },
+        "dimensions": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "additionalProperties": false,
+            "required": [
+                "length",
+                "width",
+                "height",
+                "unit"
+            ],
+            "properties": {
+                "length": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0
+                },
+                "width": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0
+                },
+                "height": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0
+                },
+                "unit": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "minLength": 1
+                }
+            },
+            "description": "Dimensiones y unidad explícitas; no se supone cm."
+        },
+        "images": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "format": "uri"
+            }
+        },
+        "characteristics": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "type": "object",
+                "properties": {
+                    "attrName": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "attrValue": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "attrName",
+                    "attrValue"
+                ]
+            }
+        },
+        "variations": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "enum": [
+                            "Variación"
+                        ]
+                    },
+                    "variants": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "price": {
+                                    "type": [
+                                        "number",
+                                        "null"
+                                    ],
+                                    "description": "Explicit source amount; currency is absent in the supplied reference.",
+                                    "minimum": 0
+                                },
+                                "image": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ],
+                                    "format": "uri"
+                                }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                                "name",
+                                "price",
+                                "image"
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "name",
+                    "variants"
+                ]
+            }
+        },
+        "productId": {
+            "type": [
+                "integer",
+                "string",
+                "null"
+            ],
+            "minimum": 0,
+            "maximum": 9007199254740991
+        }
+    },
+    "description": "Actor export after success/partial extraction. Missing data stays null; [] means no extracted price tiers.",
+    "additionalProperties": false,
+    "required": [
+        "url",
+        "title",
+        "price",
+        "productLadderPrices",
+        "moq",
+        "weight",
+        "dimensions",
+        "images",
+        "characteristics",
+        "variations",
+        "productId"
+    ]
+}

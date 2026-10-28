@@ -1,0 +1,53 @@
+# Dependencies and generated TypeScript
+node_modules/
+dist/
+.test-dist/
+coverage/
+*.tsbuildinfo
+
+# Local Actor data and downloaded material
+storage/
+apify_storage/
+crawlee_storage/
+docker-storage/
+local-html/
+deliverables/
+TU_CUMPA_Entrega_CNXieku/
+github-work/
+backups/
+tmp/
+temp/
+*.zip
+*.log
+*.bak
+*.old
+*.tmp
+*.swp
+*.har
+
+# Secrets and private local configuration
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+.aws/
+.ssh/
+.apify/
+config/*.local.json
+config/*
+!config/*.example.json
+credentials*.json
+
+# Local tooling and internal agent instructions
+.idea/
+.vscode/
+.zed/
+.venv/
+.codex/
+.agents/
+AGENTS.md
+CLAUDE.md
+.DS_Store
+Thumbs.db

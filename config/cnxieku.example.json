@@ -1,0 +1,13 @@
+{
+    "www.cnxieku.com": {
+        "permissionBasis": "project-declared",
+        "declaredBy": "Responsables del proyecto TU CUMPA",
+        "agreementReviewed": false,
+        "allowProductGet": true,
+        "robotsException": true,
+        "search": {
+            "allowGet": true, "path": "/search/", "searchType": "1",
+            "allowDataGet": true, "dataPath": "/api/product/product/list"
+        }
+    }
+}

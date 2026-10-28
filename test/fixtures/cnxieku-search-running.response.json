@@ -1,0 +1,88 @@
+{
+  "code": 0,
+  "data": {
+    "total": 1473,
+    "records": [
+      {
+        "productId": 20274,
+        "picUrl": "img/gallery/202610/g7iHEkrYRc1yfjMVxC.jpg?x-oss-process=image/resize,m_pad,h_500,h_500",
+        "picThumb": "img/gallery/202610/g7iHEkrYRc1yfjMVxC.jpg?x-oss-process=image/resize,m_pad,h_200,h_200",
+        "productName": "新款超轻减震防滑竞速碳板超弹休闲运动鞋跑步鞋潮鞋1937",
+        "productSn": "1937",
+        "productPrice": "78.00"
+      },
+      {
+        "productId": 20298,
+        "picUrl": "img/gallery/202610/I0EQiktSap8pJyIPB2.jpg?x-oss-process=image/resize,m_pad,h_500,h_500",
+        "picThumb": "img/gallery/202610/I0EQiktSap8pJyIPB2.jpg?x-oss-process=image/resize,m_pad,h_200,h_200",
+        "productName": "蜘蛛侠男童鞋子2026春秋新款儿童运动鞋网面防滑中小童跑步鞋",
+        "productSn": "YC-387YC",
+        "productPrice": "45.00"
+      },
+      {
+        "productId": 20297,
+        "picUrl": "img/gallery/202610/Ue6bgORX5W3Z5NNDQT.png?x-oss-process=image/resize,m_pad,h_500,h_500",
+        "picThumb": "img/gallery/202610/Ue6bgORX5W3Z5NNDQT.png?x-oss-process=image/resize,m_pad,h_200,h_200",
+        "productName": "男童鞋子小童防滑中跑步鞋网面透气蜘蛛侠儿童运动鞋秋季轻便2026",
+        "productSn": "YC-387YC",
+        "productPrice": "45.00"
+      },
+      {
+        "productId": 20283,
+        "picUrl": "img/gallery/202610/A5zdrYbLPlZjUuWRyz.jpg?x-oss-process=image/resize,m_pad,h_500,h_500",
+        "picThumb": "img/gallery/202610/A5zdrYbLPlZjUuWRyz.jpg?x-oss-process=image/resize,m_pad,h_200,h_200",
+        "productName": "悦足588 冬季新款大棉运动鞋跑步鞋 跨境外贸28-39",
+        "productSn": "588DM",
+        "productPrice": "39.00"
+      },
+      {
+        "productId": 20178,
+        "picUrl": "img/gallery/202610/Brzo7zZxQuqifjuEtG.png?x-oss-process=image/resize,m_pad,h_500,h_500",
+        "picThumb": "img/gallery/202610/Brzo7zZxQuqifjuEtG.png?x-oss-process=image/resize,m_pad,h_200,h_200",
+        "productName": "儿童运动鞋男女童休闲鞋春秋季新款纽扣跑步鞋百搭软底学生小黑鞋",
+        "productSn": "XSX-2668",
+        "productPrice": "45.00"
+      },
+      {
+        "productId": 20179,
+        "picUrl": "img/gallery/202610/yGlaG72jxHVXj9xSjc.jpg?x-oss-process=image/resize,m_pad,h_500,h_500",
+        "picThumb": "img/gallery/202610/yGlaG72jxHVXj9xSjc.jpg?x-oss-process=image/resize,m_pad,h_200,h_200",
+        "productName": "儿童运动鞋男女童休闲鞋春秋季新款纯黑老爹鞋百搭软底学生跑步鞋",
+        "productSn": "XSX-2668",
+        "productPrice": "45.00"
+      },
+      {
+        "productId": 20251,
+        "picUrl": "img/gallery/202610/0NnmSiFj0KKOAsjZOc.jpg?x-oss-process=image/resize,m_pad,h_500,h_500",
+        "picThumb": "img/gallery/202610/0NnmSiFj0KKOAsjZOc.jpg?x-oss-process=image/resize,m_pad,h_200,h_200",
+        "productName": "爆款1933户外通勤跑步鞋（多功能）跨境外贸P80",
+        "productSn": "1933",
+        "productPrice": "80.00"
+      },
+      {
+        "productId": 20125,
+        "picUrl": "img/gallery/202610/zGZrUJd5X9EBNuOPZV.jpg?x-oss-process=image/resize,m_pad,h_500,h_500",
+        "picThumb": "img/gallery/202610/zGZrUJd5X9EBNuOPZV.jpg?x-oss-process=image/resize,m_pad,h_200,h_200",
+        "productName": "源头招分销2899真爆透气网面软底运动碳板轻便跑步鞋P78",
+        "productSn": "2899",
+        "productPrice": "78.00"
+      },
+      {
+        "productId": 20052,
+        "picUrl": "img/gallery/202610/B3xwjUcWsbIcAyvWfU.jpg?x-oss-process=image/resize,m_pad,h_500,h_500",
+        "picThumb": "img/gallery/202610/B3xwjUcWsbIcAyvWfU.jpg?x-oss-process=image/resize,m_pad,h_200,h_200",
+        "productName": "悦足5580  赤兔9网面儿童运动鞋跑步鞋31-40",
+        "productSn": "5580",
+        "productPrice": "46.00"
+      },
+      {
+        "productId": 20089,
+        "picUrl": "img/gallery/202610/1YxQC5wzPeTnt3eUOp.jpg?x-oss-process=image/resize,m_pad,h_500,h_500",
+        "picThumb": "img/gallery/202610/1YxQC5wzPeTnt3eUOp.jpg?x-oss-process=image/resize,m_pad,h_200,h_200",
+        "productName": "源头招分销1937新款情侣冷粘运动休闲跑步鞋跨境P78",
+        "productSn": "1937",
+        "productPrice": "78.00"
+      }
+    ]
+  }
+}

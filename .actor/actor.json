@@ -1,0 +1,20 @@
+{
+    "$schema": "https://apify.com/schemas/v1/actor.ide.json",
+    "actorSpecification": 1,
+    "name": "tucumpa-products",
+    "title": "TU CUMPA - CNXieku: ficha y búsqueda",
+    "description": "Busca candidatos CNXieku por palabra clave o artículo, o extrae una ficha por URL en canonical/reference1688. Permisos declarados por ruta, HTTPS verificado y límites estrictos. Back Market conserva su comportamiento anterior.",
+    "version": "0.0",
+    "buildTag": "latest",
+    "meta": {
+        "templateId": "ts-crawlee-cheerio",
+        "generatedBy": "OpenAI Codex with GPT-6"
+    },
+    "inputSchema": "./input_schema.json",
+    "outputSchema": "./output_schema.json",
+    "storages": {
+        "dataset": "./dataset_schema.json",
+        "keyValueStore": "./key_value_store_schema.json"
+    },
+    "dockerfile": "../Dockerfile"
+}

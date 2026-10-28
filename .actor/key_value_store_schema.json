@@ -1,0 +1,305 @@
+{
+    "actorKeyValueStoreSchemaVersion": 1,
+    "title": "Estado de ejecución de un producto",
+    "collections": {
+        "runState": {
+            "title": "Estado de la última ejecución",
+            "key": "RUN_STATE",
+            "contentTypes": [
+                "application/json"
+            ],
+            "jsonSchema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "source",
+                    "status",
+                    "savedResults",
+                    "resultStatus"
+                ],
+                "properties": {
+                    "source": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "enum": [
+                            null,
+                            "cnxieku",
+                            "back-market"
+                        ]
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "running",
+                            "completed",
+                            "aborted",
+                            "failed"
+                        ]
+                    },
+                    "savedResults": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 1
+                    },
+                    "resultStatus": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "enum": [
+                            null,
+                            "success",
+                            "partial",
+                            "blocked",
+                            "not_found",
+                            "timeout",
+                            "unsupported",
+                            "error"
+                        ]
+                    }
+                }
+            }
+        },
+        "timings": {
+            "title": "Measured execution timings",
+            "key": "TIMINGS",
+            "contentTypes": [
+                "application/json"
+            ],
+            "jsonSchema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "environment",
+                    "mode",
+                    "requestedUrl",
+                    "resultStatus",
+                    "httpStatus",
+                    "downloadMs",
+                    "analysisMs",
+                    "jsonGenerationMs",
+                    "totalMs",
+                    "totalScope"
+                ],
+                "properties": {
+                    "environment": {
+                        "type": "string",
+                        "enum": [
+                            "public-https",
+                            "authorization-gate",
+                            "controlled-https",
+                            "supplied-html",
+                            "simulated"
+                        ]
+                    },
+                    "mode": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "enum": [
+                            null,
+                            "product",
+                            "search",
+                            "html",
+                            "mock"
+                        ]
+                    },
+                    "requestedUrl": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uri"
+                    },
+                    "resultStatus": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "enum": [
+                            null,
+                            "success",
+                            "partial",
+                            "blocked",
+                            "not_found",
+                            "timeout",
+                            "unsupported",
+                            "error"
+                        ]
+                    },
+                    "httpStatus": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "minimum": 100,
+                        "maximum": 599
+                    },
+                    "downloadMs": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "minimum": 0,
+                        "description": "DNS/TLS/download/decoding stage; null when no attempt was permitted."
+                    },
+                    "analysisMs": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "minimum": 0
+                    },
+                    "jsonGenerationMs": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "minimum": 0,
+                        "description": "Output formatting plus JSON.stringify; SDK persistence is included in totalMs."
+                    },
+                    "totalMs": {
+                        "type": "number",
+                        "minimum": 0
+                    },
+                    "totalScope": {
+                        "type": "string"
+                    },
+                    "searchMs": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "minimum": 0,
+                        "description": "Operaci?n de b?squeda completa (p?gina y datos); null si no se permiti? iniciarla."
+                    },
+                    "searchPerformed": {
+                        "type": "boolean"
+                    },
+                    "requests": {
+                        "type": "array",
+                        "maxItems": 3,
+                        "description": "Back Market only: each attempted hop, original Location, resolved destination and real DNS/request timings. followed means the next transport was invoked after DNS validation.",
+                        "items": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                                "url",
+                                "startedAt",
+                                "httpStatus",
+                                "location",
+                                "destination",
+                                "followed",
+                                "decision",
+                                "dnsMs",
+                                "requestMs",
+                                "totalMs",
+                                "errorCode"
+                            ],
+                            "properties": {
+                                "url": {
+                                    "type": "string",
+                                    "format": "uri"
+                                },
+                                "startedAt": {
+                                    "type": "string"
+                                },
+                                "httpStatus": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ],
+                                    "minimum": 100,
+                                    "maximum": 599
+                                },
+                                "location": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "destination": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "followed": {
+                                    "type": "boolean"
+                                },
+                                "decision": {
+                                    "type": "string"
+                                },
+                                "dnsMs": {
+                                    "type": [
+                                        "number",
+                                        "null"
+                                    ],
+                                    "minimum": 0
+                                },
+                                "requestMs": {
+                                    "type": [
+                                        "number",
+                                        "null"
+                                    ],
+                                    "minimum": 0
+                                },
+                                "totalMs": {
+                                    "type": "number",
+                                    "minimum": 0
+                                },
+                                "errorCode": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "searchRequests": {
+                        "type": "array",
+                        "maxItems": 2,
+                        "items": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                                "url",
+                                "httpStatus",
+                                "downloadMs",
+                                "errorCode"
+                            ],
+                            "properties": {
+                                "url": {
+                                    "type": "string",
+                                    "format": "uri"
+                                },
+                                "httpStatus": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ],
+                                    "minimum": 100,
+                                    "maximum": 599
+                                },
+                                "downloadMs": {
+                                    "type": "number",
+                                    "minimum": 0
+                                },
+                                "errorCode": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

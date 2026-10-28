@@ -1,0 +1,968 @@
+{
+    "$schema": "https://apify.com/schemas/v1/dataset.ide.json",
+    "actorSpecification": 1,
+    "fields": {
+        "type": "object",
+        "oneOf": [
+            {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "requestedUrl",
+                    "source",
+                    "mode",
+                    "status",
+                    "httpStatus",
+                    "product",
+                    "missingFields",
+                    "error"
+                ],
+                "properties": {
+                    "requestedUrl": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uri",
+                        "description": "URL validada y canónica; null para entrada no aceptada. No se guardan URLs inseguras."
+                    },
+                    "source": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "enum": [
+                            null,
+                            "cnxieku",
+                            "back-market"
+                        ]
+                    },
+                    "mode": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "enum": [
+                            null,
+                            "product",
+                            "mock",
+                            "html"
+                        ]
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "success",
+                            "partial",
+                            "blocked",
+                            "not_found",
+                            "timeout",
+                            "unsupported",
+                            "error"
+                        ]
+                    },
+                    "httpStatus": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "minimum": 100,
+                        "maximum": 599
+                    },
+                    "product": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                            "url",
+                            "title",
+                            "price",
+                            "moq",
+                            "weight",
+                            "dimensions",
+                            "images",
+                            "characteristics",
+                            "variations",
+                            "productId"
+                        ],
+                        "properties": {
+                            "url": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "minLength": 1,
+                                "format": "uri",
+                                "pattern": "^https?://",
+                                "description": "URL HTTP(S) explícita; null si falta o es inválida."
+                            },
+                            "title": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "minLength": 1,
+                                "description": "Título explícito del producto."
+                            },
+                            "price": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "additionalProperties": false,
+                                "required": [
+                                    "amount",
+                                    "currency"
+                                ],
+                                "properties": {
+                                    "amount": {
+                                        "type": [
+                                            "number",
+                                            "null"
+                                        ],
+                                        "minimum": 0
+                                    },
+                                    "currency": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ],
+                                        "minLength": 1
+                                    }
+                                },
+                                "description": "Importe y moneda explícitos; no se infiere moneda ni se convierten precios."
+                            },
+                            "moq": {
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ],
+                                "minimum": 1,
+                                "description": "Cantidad mínima explícita. Nunca se supone MOQ=1."
+                            },
+                            "weight": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "additionalProperties": false,
+                                "required": [
+                                    "value",
+                                    "unit"
+                                ],
+                                "properties": {
+                                    "value": {
+                                        "type": [
+                                            "number",
+                                            "null"
+                                        ],
+                                        "minimum": 0
+                                    },
+                                    "unit": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ],
+                                        "minLength": 1
+                                    }
+                                },
+                                "description": "Peso y unidad explícitos; no se supone kg."
+                            },
+                            "dimensions": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "additionalProperties": false,
+                                "required": [
+                                    "length",
+                                    "width",
+                                    "height",
+                                    "unit"
+                                ],
+                                "properties": {
+                                    "length": {
+                                        "type": [
+                                            "number",
+                                            "null"
+                                        ],
+                                        "minimum": 0
+                                    },
+                                    "width": {
+                                        "type": [
+                                            "number",
+                                            "null"
+                                        ],
+                                        "minimum": 0
+                                    },
+                                    "height": {
+                                        "type": [
+                                            "number",
+                                            "null"
+                                        ],
+                                        "minimum": 0
+                                    },
+                                    "unit": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ],
+                                        "minLength": 1
+                                    }
+                                },
+                                "description": "Dimensiones y unidad explícitas; no se supone cm."
+                            },
+                            "images": {
+                                "type": [
+                                    "array",
+                                    "null"
+                                ],
+                                "items": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ],
+                                    "minLength": 1,
+                                    "format": "uri",
+                                    "pattern": "^https?://"
+                                },
+                                "description": "URLs explícitas. Ausente=null, lista vacía=[], elemento inválido=null."
+                            },
+                            "characteristics": {
+                                "type": [
+                                    "array",
+                                    "null"
+                                ],
+                                "items": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "additionalProperties": false,
+                                    "required": [
+                                        "name",
+                                        "value"
+                                    ],
+                                    "properties": {
+                                        "name": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ],
+                                            "minLength": 1
+                                        },
+                                        "value": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ],
+                                            "minLength": 1
+                                        }
+                                    }
+                                },
+                                "description": "Características en pares name/value. Valores ausentes=null."
+                            },
+                            "variations": {
+                                "type": [
+                                    "array",
+                                    "null"
+                                ],
+                                "items": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "additionalProperties": false,
+                                    "required": [
+                                        "productId",
+                                        "title",
+                                        "price",
+                                        "images",
+                                        "characteristics"
+                                    ],
+                                    "properties": {
+                                        "productId": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ],
+                                            "minLength": 1
+                                        },
+                                        "title": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ],
+                                            "minLength": 1
+                                        },
+                                        "price": {
+                                            "type": [
+                                                "object",
+                                                "null"
+                                            ],
+                                            "additionalProperties": false,
+                                            "required": [
+                                                "amount",
+                                                "currency"
+                                            ],
+                                            "properties": {
+                                                "amount": {
+                                                    "type": [
+                                                        "number",
+                                                        "null"
+                                                    ],
+                                                    "minimum": 0
+                                                },
+                                                "currency": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ],
+                                                    "minLength": 1
+                                                }
+                                            }
+                                        },
+                                        "images": {
+                                            "type": [
+                                                "array",
+                                                "null"
+                                            ],
+                                            "items": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ],
+                                                "minLength": 1,
+                                                "format": "uri",
+                                                "pattern": "^https?://"
+                                            }
+                                        },
+                                        "characteristics": {
+                                            "type": [
+                                                "array",
+                                                "null"
+                                            ],
+                                            "items": {
+                                                "type": [
+                                                    "object",
+                                                    "null"
+                                                ],
+                                                "additionalProperties": false,
+                                                "required": [
+                                                    "name",
+                                                    "value"
+                                                ],
+                                                "properties": {
+                                                    "name": {
+                                                        "type": [
+                                                            "string",
+                                                            "null"
+                                                        ],
+                                                        "minLength": 1
+                                                    },
+                                                    "value": {
+                                                        "type": [
+                                                            "string",
+                                                            "null"
+                                                        ],
+                                                        "minLength": 1
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "description": "Variantes con productId, title, price, images y characteristics."
+                            },
+                            "productId": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "minLength": 1,
+                                "description": "Identificador textual explícito. No se deriva de URL ni se generan IDs."
+                            }
+                        }
+                    },
+                    "missingFields": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    },
+                    "error": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "additionalProperties": false,
+                        "required": [
+                            "code",
+                            "message",
+                            "retryAfter"
+                        ],
+                        "properties": {
+                            "code": {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "message": {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "retryAfter": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "description": "Instrucción Retry-After válida del servidor; no implica que se haya reintentado."
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uri"
+                    },
+                    "title": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "price": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Explicit source amount; currency is absent in the supplied reference."
+                    },
+                    "productLadderPrices": {
+                        "type": "array",
+                        "items": {},
+                        "description": "No extracted price tiers; not a claim that no tiers exist at the source.",
+                        "maxItems": 0
+                    },
+                    "moq": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "minimum": 1
+                    },
+                    "weight": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "additionalProperties": false,
+                        "required": [
+                            "value",
+                            "unit"
+                        ],
+                        "properties": {
+                            "value": {
+                                "type": [
+                                    "number",
+                                    "null"
+                                ],
+                                "minimum": 0
+                            },
+                            "unit": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "minLength": 1
+                            }
+                        },
+                        "description": "Known source weight only. Zero placeholders are null; positive legacy structure remains unverified against an engineer sample."
+                    },
+                    "dimensions": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "additionalProperties": false,
+                        "required": [
+                            "length",
+                            "width",
+                            "height",
+                            "unit"
+                        ],
+                        "properties": {
+                            "length": {
+                                "type": [
+                                    "number",
+                                    "null"
+                                ],
+                                "minimum": 0
+                            },
+                            "width": {
+                                "type": [
+                                    "number",
+                                    "null"
+                                ],
+                                "minimum": 0
+                            },
+                            "height": {
+                                "type": [
+                                    "number",
+                                    "null"
+                                ],
+                                "minimum": 0
+                            },
+                            "unit": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "minLength": 1
+                            }
+                        },
+                        "description": "Dimensiones y unidad explícitas; no se supone cm."
+                    },
+                    "images": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "items": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "format": "uri"
+                        }
+                    },
+                    "characteristics": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "attrName": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "attrValue": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                                "attrName",
+                                "attrValue"
+                            ]
+                        }
+                    },
+                    "variations": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "enum": [
+                                        "Variación"
+                                    ]
+                                },
+                                "variants": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "price": {
+                                                "type": [
+                                                    "number",
+                                                    "null"
+                                                ],
+                                                "description": "Explicit source amount; currency is absent in the supplied reference.",
+                                                "minimum": 0
+                                            },
+                                            "image": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ],
+                                                "format": "uri"
+                                            }
+                                        },
+                                        "additionalProperties": false,
+                                        "required": [
+                                            "name",
+                                            "price",
+                                            "image"
+                                        ]
+                                    }
+                                }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                                "name",
+                                "variants"
+                            ]
+                        }
+                    },
+                    "productId": {
+                        "type": [
+                            "integer",
+                            "string",
+                            "null"
+                        ],
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                    }
+                },
+                "description": "Actor export after success/partial extraction. Missing data stays null; [] means no extracted price tiers.",
+                "additionalProperties": false,
+                "required": [
+                    "url",
+                    "title",
+                    "price",
+                    "productLadderPrices",
+                    "moq",
+                    "weight",
+                    "dimensions",
+                    "images",
+                    "characteristics",
+                    "variations",
+                    "productId"
+                ]
+            },
+            {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "mode",
+                    "source",
+                    "requestedUrl",
+                    "query",
+                    "maxResults",
+                    "status",
+                    "searchPerformed",
+                    "httpStatus",
+                    "results",
+                    "error"
+                ],
+                "properties": {
+                    "mode": {
+                        "type": "string",
+                        "enum": [
+                            "search"
+                        ]
+                    },
+                    "source": {
+                        "type": "string",
+                        "enum": [
+                            "cnxieku"
+                        ]
+                    },
+                    "requestedUrl": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uri"
+                    },
+                    "query": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "maxResults": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "minimum": 1,
+                        "maximum": 20
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "success",
+                            "partial",
+                            "blocked",
+                            "error",
+                            "timeout",
+                            "not_found"
+                        ]
+                    },
+                    "searchPerformed": {
+                        "type": "boolean"
+                    },
+                    "httpStatus": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "minimum": 100,
+                        "maximum": 599
+                    },
+                    "results": {
+                        "type": "array",
+                        "maxItems": 20,
+                        "description": "Candidatos verificados de la primera pagina; no se descargan sus fichas.",
+                        "items": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                                "productId",
+                                "title",
+                                "url",
+                                "price",
+                                "image",
+                                "source"
+                            ],
+                            "properties": {
+                                "productId": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string",
+                                    "pattern": "^https://www\\.cnxieku\\.com/item/[0-9]+$",
+                                    "format": "uri"
+                                },
+                                "price": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "additionalProperties": false,
+                                    "required": [
+                                        "amount",
+                                        "currency"
+                                    ],
+                                    "properties": {
+                                        "amount": {
+                                            "type": [
+                                                "number",
+                                                "null"
+                                            ],
+                                            "minimum": 0
+                                        },
+                                        "currency": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "image": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ],
+                                    "format": "uri"
+                                },
+                                "source": {
+                                    "type": "string",
+                                    "enum": [
+                                        "cnxieku"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "error": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "additionalProperties": false,
+                        "required": [
+                            "code",
+                            "message",
+                            "retryAfter"
+                        ],
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "message": {
+                                "type": "string"
+                            },
+                            "retryAfter": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "views": {
+        "overview": {
+            "title": "Un resultado por URL",
+            "transformation": {
+                "fields": [
+                    "requestedUrl",
+                    "source",
+                    "mode",
+                    "status",
+                    "httpStatus",
+                    "product",
+                    "missingFields",
+                    "error"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "requestedUrl": {
+                        "label": "URL",
+                        "format": "link"
+                    },
+                    "source": {
+                        "label": "Fuente",
+                        "format": "text"
+                    },
+                    "mode": {
+                        "label": "Modo",
+                        "format": "text"
+                    },
+                    "status": {
+                        "label": "Estado",
+                        "format": "text"
+                    },
+                    "httpStatus": {
+                        "label": "HTTP",
+                        "format": "number"
+                    },
+                    "product": {
+                        "label": "Producto",
+                        "format": "object"
+                    },
+                    "missingFields": {
+                        "label": "Datos faltantes",
+                        "format": "array"
+                    },
+                    "error": {
+                        "label": "Error",
+                        "format": "object"
+                    }
+                }
+            }
+        },
+        "reference1688": {
+            "title": "Producto reference1688",
+            "transformation": {
+                "fields": [
+                    "url",
+                    "title",
+                    "price",
+                    "productLadderPrices",
+                    "moq",
+                    "weight",
+                    "dimensions",
+                    "images",
+                    "characteristics",
+                    "variations",
+                    "productId"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "url": {
+                        "label": "URL",
+                        "format": "link"
+                    },
+                    "title": {
+                        "label": "Title",
+                        "format": "text"
+                    },
+                    "price": {
+                        "label": "Price",
+                        "format": "text"
+                    },
+                    "weight": {
+                        "label": "Weight",
+                        "format": "object"
+                    },
+                    "variations": {
+                        "label": "Variants",
+                        "format": "array"
+                    }
+                }
+            }
+        },
+        "search": {
+            "title": "CNXieku: resultados de busqueda",
+            "transformation": {
+                "fields": [
+                    "mode",
+                    "source",
+                    "requestedUrl",
+                    "query",
+                    "maxResults",
+                    "status",
+                    "searchPerformed",
+                    "httpStatus",
+                    "results",
+                    "error"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "query": {
+                        "label": "Consulta",
+                        "format": "text"
+                    },
+                    "status": {
+                        "label": "Estado",
+                        "format": "text"
+                    },
+                    "searchPerformed": {
+                        "label": "Busqueda realizada",
+                        "format": "boolean"
+                    },
+                    "results": {
+                        "label": "Candidatos",
+                        "format": "array"
+                    },
+                    "error": {
+                        "label": "Motivo",
+                        "format": "object"
+                    }
+                }
+            }
+        }
+    }
+}

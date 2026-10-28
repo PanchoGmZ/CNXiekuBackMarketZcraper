@@ -1,0 +1,44 @@
+{
+    "reference": {
+        "file": "1688.reference.json",
+        "origin": "User attachment 000000001.json",
+        "sourceSha256": "44dfd399d029637938c6d574de54f154140a2f7103f1d8895d6b39d1b01af8f5",
+        "redactions": {
+            "field": "url",
+            "removedQueryKeys": [
+                "spm",
+                "cosite",
+                "tracelog",
+                "_p_isad",
+                "clickid",
+                "sessionid"
+            ],
+            "reason": "Remove session and tracking identifiers; product path preserved."
+        }
+    },
+    "html": {
+        "file": "src/fixtures/html.ts",
+        "origin": "Locally authored synthetic Schema.org/Open Graph examples",
+        "capturedFromMarketplace": false,
+        "verifiedMarketplaceFields": [],
+        "networkAuthorization": false
+    },
+    "cnxiekuSearch": {
+        "file": "cnxieku-search-running.response.json",
+        "origin": "Authorized anonymous public GET of the observed official search data endpoint",
+        "httpStatus": 200,
+        "projection": "Only code, data.total and commercial candidate fields retained; shop/contact/user fields omitted.",
+        "sha256": "c347af1c9d6239e961e8274658fd7e0bd86a6d253d6d732081a914780cfaafdb",
+        "nuxtEnvelopeInTests": "Explicitly synthetic minimal state, not captured HTML",
+        "source": "https://www.cnxieku.com/api/product/product/list (authorized anonymous search, projected commercial fields only)"
+    },
+    "cnxieku20274": {
+        "file": "cnxieku-20274.nuxt.json",
+        "origin": "Authorized anonymous GET /item/20274",
+        "sourceSha256": "f8b1fe40178d5dce10674aecdfafb38838513c341437cd67a88ac60573ec1e79",
+        "fixtureSha256": "e975b7d7b359db8b2f70963542b9a0b0d6e07e54b2f5ec576ac32a8079f32baf",
+        "projection": "Original Nuxt indexes and selected commercial fields retained; unselected values set to null. User, shop, contacts and recommendations omitted. No image values invented.",
+        "htmlEnvelope": "Minimal synthetic script envelope only; the Nuxt values are projected from the real response.",
+        "source": "https://www.cnxieku.com/item/20274 (authorized anonymous product response, projected commercial fields only)"
+    }
+}

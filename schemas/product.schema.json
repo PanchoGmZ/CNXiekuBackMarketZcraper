@@ -1,0 +1,187 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "url",
+        "title",
+        "price",
+        "moq",
+        "weight",
+        "dimensions",
+        "images",
+        "characteristics",
+        "variations",
+        "productId"
+    ],
+    "properties": {
+        "url": {
+            "type": ["string", "null"],
+            "minLength": 1,
+            "format": "uri",
+            "pattern": "^https?://",
+            "description": "URL HTTP(S) explícita; null si falta o es inválida."
+        },
+        "title": {
+            "type": ["string", "null"],
+            "minLength": 1,
+            "description": "Título explícito del producto."
+        },
+        "price": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "required": ["amount", "currency"],
+            "properties": {
+                "amount": {
+                    "type": ["number", "null"],
+                    "minimum": 0
+                },
+                "currency": {
+                    "type": ["string", "null"],
+                    "minLength": 1
+                }
+            },
+            "description": "Importe y moneda explícitos; no se infiere moneda ni se convierten precios."
+        },
+        "moq": {
+            "type": ["integer", "null"],
+            "minimum": 1,
+            "description": "Cantidad mínima explícita. Nunca se supone MOQ=1."
+        },
+        "weight": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "required": ["value", "unit"],
+            "properties": {
+                "value": {
+                    "type": ["number", "null"],
+                    "minimum": 0
+                },
+                "unit": {
+                    "type": ["string", "null"],
+                    "minLength": 1
+                }
+            },
+            "description": "Peso y unidad explícitos; no se supone kg."
+        },
+        "dimensions": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "required": ["length", "width", "height", "unit"],
+            "properties": {
+                "length": {
+                    "type": ["number", "null"],
+                    "minimum": 0
+                },
+                "width": {
+                    "type": ["number", "null"],
+                    "minimum": 0
+                },
+                "height": {
+                    "type": ["number", "null"],
+                    "minimum": 0
+                },
+                "unit": {
+                    "type": ["string", "null"],
+                    "minLength": 1
+                }
+            },
+            "description": "Dimensiones y unidad explícitas; no se supone cm."
+        },
+        "images": {
+            "type": ["array", "null"],
+            "items": {
+                "type": ["string", "null"],
+                "minLength": 1,
+                "format": "uri",
+                "pattern": "^https?://"
+            },
+            "description": "URLs explícitas. Ausente=null, lista vacía=[], elemento inválido=null."
+        },
+        "characteristics": {
+            "type": ["array", "null"],
+            "items": {
+                "type": ["object", "null"],
+                "additionalProperties": false,
+                "required": ["name", "value"],
+                "properties": {
+                    "name": {
+                        "type": ["string", "null"],
+                        "minLength": 1
+                    },
+                    "value": {
+                        "type": ["string", "null"],
+                        "minLength": 1
+                    }
+                }
+            },
+            "description": "Características en pares name/value. Valores ausentes=null."
+        },
+        "variations": {
+            "type": ["array", "null"],
+            "items": {
+                "type": ["object", "null"],
+                "additionalProperties": false,
+                "required": ["productId", "title", "price", "images", "characteristics"],
+                "properties": {
+                    "productId": {
+                        "type": ["string", "null"],
+                        "minLength": 1
+                    },
+                    "title": {
+                        "type": ["string", "null"],
+                        "minLength": 1
+                    },
+                    "price": {
+                        "type": ["object", "null"],
+                        "additionalProperties": false,
+                        "required": ["amount", "currency"],
+                        "properties": {
+                            "amount": {
+                                "type": ["number", "null"],
+                                "minimum": 0
+                            },
+                            "currency": {
+                                "type": ["string", "null"],
+                                "minLength": 1
+                            }
+                        }
+                    },
+                    "images": {
+                        "type": ["array", "null"],
+                        "items": {
+                            "type": ["string", "null"],
+                            "minLength": 1,
+                            "format": "uri",
+                            "pattern": "^https?://"
+                        }
+                    },
+                    "characteristics": {
+                        "type": ["array", "null"],
+                        "items": {
+                            "type": ["object", "null"],
+                            "additionalProperties": false,
+                            "required": ["name", "value"],
+                            "properties": {
+                                "name": {
+                                    "type": ["string", "null"],
+                                    "minLength": 1
+                                },
+                                "value": {
+                                    "type": ["string", "null"],
+                                    "minLength": 1
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "description": "Variantes con productId, title, price, images y characteristics."
+        },
+        "productId": {
+            "type": ["string", "null"],
+            "minLength": 1,
+            "description": "Identificador textual explícito. No se deriva de URL ni se generan IDs."
+        }
+    }
+}

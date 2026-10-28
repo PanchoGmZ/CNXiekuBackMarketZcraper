@@ -1,0 +1,99 @@
+{
+    "$schema": "https://apify.com/schemas/v1/input.ide.json",
+    "title": "TU CUMPA - CNXieku por URL y contrato de búsqueda",
+    "type": "object",
+    "schemaVersion": 1,
+    "required": [],
+    "properties": {
+        "outputFormat": {
+            "title": "Formato de salida",
+            "type": "string",
+            "description": "canonical conserva el resultado estructurado actual. reference1688 escribe directamente las once claves del ingeniero en extracciones success/partial; los fallos conservan el resultado de error estructurado.",
+            "enum": ["canonical", "reference1688"],
+            "default": "canonical",
+            "editor": "select"
+        },
+        "mode": {
+            "title": "Modo",
+            "type": "string",
+            "description": "product exige url y extrae una ficha. search exige query y solo admite CNXieku: consulta la ruta oficial /search/ y su primera página de datos, con permiso específico por dominio y ruta. No descarga las fichas del listado. html y mock conservan las pruebas locales. Back Market mantiene su política actual.",
+            "enum": ["product", "search", "html", "mock"],
+            "default": "product",
+            "editor": "select"
+        },
+        "url": {
+            "title": "URL de un producto",
+            "type": "string",
+            "description": "Obligatoria en product, html y mock. Omitir en search. Una única URL HTTPS de producto; CNXieku autorizado solo en www.cnxieku.com/item/ID. No admite listas, credenciales, fragmentos, IPs o puertos alternativos. La validación condicional se realiza en el Actor.",
+            "editor": "textfield",
+            "prefill": "https://www.cnxieku.com/item/20354"
+        },
+        "source": {
+            "title": "Fuente de búsqueda",
+            "type": "string",
+            "description": "Solo en search. Única fuente admitida: cnxieku. En product se infiere de la URL; omitir este campo.",
+            "enum": ["cnxieku"],
+            "prefill": "cnxieku",
+            "editor": "select"
+        },
+        "query": {
+            "title": "Palabra clave, nombre o código",
+            "type": "string",
+            "description": "Solo en search: palabra clave, nombre o número de artículo; entre 1 y 200 caracteres, conservando Unicode/chino. No acepta texto vacío ni controles. Utiliza keyword y searchType=1 de la ruta oficial; no transforma códigos en URLs supuestas.",
+            "minLength": 1,
+            "maxLength": 200,
+            "prefill": "跑步鞋",
+            "editor": "textfield"
+        },
+        "maxResults": {
+            "title": "Máximo de candidatos",
+            "type": "integer",
+            "description": "Solo en search: 1 a 20; si se omite, el Actor utiliza 10. Es prefill para no añadir este campo automáticamente a las entradas product. No descarga las fichas de los candidatos.",
+            "minimum": 1,
+            "maximum": 20,
+            "prefill": 10
+        },
+        "timeoutSecs": {
+            "title": "Tiempo máximo de operación",
+            "type": "integer",
+            "description": "Límite total en segundos, incluida la resolución simulada y la solicitud. Entre 1 y 60. No habilita reintentos.",
+            "default": 30,
+            "minimum": 1,
+            "maximum": 60
+        },
+        "mockScenario": {
+            "title": "Escenario simulado",
+            "type": "string",
+            "description": "Solo con mode=mock. Si se omite, usa complete. No debe enviarse en modo product. html prueba los analizadores locales con fixtures sintéticos; usar los ejemplos input.html.*.mock.json.",
+            "enum": [
+                "complete",
+                "partial",
+                "forbidden",
+                "not_found",
+                "rate_limited",
+                "timeout",
+                "protected",
+                "redirect",
+                "error",
+                "html"
+            ],
+            "prefill": "complete",
+            "editor": "select"
+        },
+        "maxResponseBytes": {
+            "title": "Límite de bytes",
+            "type": "integer",
+            "description": "Límite para bytes descargados, descomprimidos y HTML UTF-8; mínimo 1024, máximo 2097152. No amplía el presupuesto de solicitudes.",
+            "default": 2097152,
+            "minimum": 1024,
+            "maximum": 2097152
+        },
+        "html": {
+            "title": "HTML suministrado legítimamente",
+            "type": "string",
+            "description": "Solo con mode=html: contenido de una ficha obtenido con permiso y sin datos personales. No acepta rutas o URLs de descarga. El modo product no utiliza este contenido.",
+            "prefill": "",
+            "editor": "textarea"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+	"mode": "search",
+	"source": "cnxieku",
+	"requestedUrl": "https://www.cnxieku.com/search/?keyword=1937&searchType=1",
+	"query": "1937",
+	"maxResults": 10,
+	"status": "success",
+	"searchPerformed": true,
+	"httpStatus": 200,
+	"results": [
+		{
+			"productId": "20274",
+			"title": "新款超轻减震防滑竞速碳板超弹休闲运动鞋跑步鞋潮鞋1937",
+			"url": "https://www.cnxieku.com/item/20274",
+			"price": {
+				"amount": 78,
+				"currency": null
+			},
+			"image": "https://oss.cnxieku.com/img/gallery/202610/g7iHEkrYRc1yfjMVxC.jpg?x-oss-process=image/resize,m_pad,h_200,h_200",
+			"source": "cnxieku"
+		},
+		{
+			"productId": "20089",
+			"title": "源头招分销1937新款情侣冷粘运动休闲跑步鞋跨境P78",
+			"url": "https://www.cnxieku.com/item/20089",
+			"price": {
+				"amount": 78,
+				"currency": null
+			},
+			"image": "https://oss.cnxieku.com/img/gallery/202610/1YxQC5wzPeTnt3eUOp.jpg?x-oss-process=image/resize,m_pad,h_200,h_200",
+			"source": "cnxieku"
+		}
+	],
+	"error": null
+}
